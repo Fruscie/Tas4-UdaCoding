@@ -4,6 +4,8 @@ import 'package:peternakan/Pages/Register.dart';
 import 'package:peternakan/Widget/alert.dart';
 import 'package:peternakan/model/user_model.dart';
 
+import 'PageController.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -127,11 +129,14 @@ class _LoginPageState extends State<LoginPage> {
                   if (_formKey.currentState.validate()) {
                     user.submitDataLogin(username, password).then((value) =>
                         value.toString() == "signIn"
-                            ? print('sukses')
+                            ? Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PageControl()))
                             : showAlertDialog(
                                 context, 'Username atau Password Salah!!!'));
+                    _formKey.currentState.reset();
                   }
-                  _formKey.currentState.reset();
                 }),
             TextButton(
                 onPressed: () {
@@ -141,7 +146,10 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 child: Text(
                   "Belum Punya Akun ? Silahkan Daftar",
-                  style: TextStyle(color: Colors.black, fontSize: 15,decoration: TextDecoration.underline),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      decoration: TextDecoration.underline),
                 )),
           ]),
         ));

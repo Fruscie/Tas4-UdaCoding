@@ -15,7 +15,7 @@ showAlertDialog(BuildContext context,String konteks) {
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
     
-    backgroundColor:  HexColor('#fff0f0'),
+    backgroundColor:  HexColor('#eeeeee'),
      shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(10)),
     elevation: 10,
