@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:peternakan/model/user_model.dart';
 
 import 'LoginPage.dart';
 
@@ -9,7 +10,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  var username, password;
+  var email, fullName, username, password;
   final _formKey = new GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       Center(
                         child: Container(
-                          height: 230,
+                          height: 150,
                           // padding: EdgeInsets.fromLTRB(50, 70, 50, 50),
                           child: Image.asset('asset/images/farm.png'),
                         ),
@@ -34,73 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       TextFormField(
                         validator: (value) {
                           return value.isEmpty
-                              ? "Please enter a valid name!! "
-                              : null;
-                        },
-                        textInputAction: TextInputAction.next,
-                        decoration: InputDecoration(
-                            labelText: "Name",
-                            hintStyle: TextStyle(color: HexColor('#463333')),
-                            labelStyle: TextStyle(color: HexColor('#463333')),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: HexColor('#463333'), width: 2.3)),
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: HexColor('#463333'), width: 2.3)),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                              color: HexColor('#463333'),
-                              width: 2.3,
-                            )),
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.person,
-                                color: HexColor('#463333'),
-                              ),
-                            )),
-                        onChanged: (value) {},
-                      ),
-                      SizedBox(height: 15),
-                      TextFormField(
-                        validator: (value) {
-                          return !value.contains("@")
-                              ? "Please enter a valid email !! "
-                              : null;
-                        },
-                        textInputAction: TextInputAction.next,
-                        decoration: InputDecoration(
-                            labelText: "Email",
-                            hintStyle: TextStyle(color: HexColor('#463333')),
-                            labelStyle: TextStyle(color: HexColor('#463333')),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: HexColor('#463333'), width: 2.3)),
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: HexColor('#463333'), width: 2.3)),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                              color: HexColor('#463333'),
-                              width: 2.3,
-                            )),
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.alternate_email,
-                                color: HexColor('#463333'),
-                              ),
-                            )),
-                        onChanged: (value) {
-                          username = value;
-                        },
-                      ),
-                      SizedBox(height: 15),
-                      TextFormField(
-                        validator: (value) {
-                          return value.isEmpty
-                              ? "Please enter a valid username !! "
+                              ? "Please enter a valid User Name!! "
                               : null;
                         },
                         textInputAction: TextInputAction.next,
@@ -128,6 +63,74 @@ class _RegisterPageState extends State<RegisterPage> {
                             )),
                         onChanged: (value) {
                           username = value;
+                        },
+                      ),
+                      SizedBox(height: 15),
+                      TextFormField(
+                        validator: (value) {
+                          return value.isEmpty
+                              ? "Please enter a valid full name !! "
+                              : null;
+                        },
+                        textInputAction: TextInputAction.next,
+                        decoration: InputDecoration(
+                            labelText: "Full Name",
+                            hintStyle: TextStyle(color: HexColor('#463333')),
+                            labelStyle: TextStyle(color: HexColor('#463333')),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: HexColor('#463333'), width: 2.3)),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: HexColor('#463333'), width: 2.3)),
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: HexColor('#463333'),
+                              width: 2.3,
+                            )),
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.person,
+                                color: HexColor('#463333'),
+                              ),
+                            )),
+                        onChanged: (value) {
+                          fullName = value;
+                        },
+                      ),
+                      SizedBox(height: 15),
+                      TextFormField(
+                        validator: (value) {
+                          return value.isEmpty || !value.contains('@')
+                              ? "Please enter a valid email !! "
+                              : null;
+                        },
+                        textInputAction: TextInputAction.next,
+                        decoration: InputDecoration(
+                            labelText: "Email",
+                            hintStyle: TextStyle(color: HexColor('#463333')),
+                            labelStyle: TextStyle(color: HexColor('#463333')),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: HexColor('#463333'), width: 2.3)),
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: HexColor('#463333'), width: 2.3)),
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: HexColor('#463333'),
+                              width: 2.3,
+                            )),
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.alternate_email,
+                                color: HexColor('#463333'),
+                              ),
+                            )),
+                        onChanged: (value) {
+                          email = value;
                         },
                       ),
                       SizedBox(height: 15),
@@ -177,7 +180,15 @@ class _RegisterPageState extends State<RegisterPage> {
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                           onPressed: () {
-                            if (_formKey.currentState.validate()) {}
+                            if (_formKey.currentState.validate()) {
+                              User()
+                                  .submitDataRegister(
+                                      fullName, email, username, password)
+                                  .then((value) => ScaffoldMessenger.of(context)
+                                          .showSnackBar(SnackBar(
+                                        content: Text(value),
+                                      )));
+                            }
                             _formKey.currentState.reset();
                           }),
                       TextButton(
