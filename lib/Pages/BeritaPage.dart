@@ -34,19 +34,23 @@ class ItemList extends StatelessWidget {
                 return DetailBerita(list, index);
               }));
             },
-            child: Card(
-              child: ListTile(
-                title: Text(
-                  list[index]['judul'],
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.brown),
-                ),
-                subtitle: Text("Tanggal :${list[index]['tgl_berita']}"),
-                trailing: Image.network(
-                  'http://apiternak.000webhostapp.com/' + list[index]['foto'],
-                  fit: BoxFit.cover,
-                  width: 60.0,
-                  height: 60.0,
+            child: Container(
+              height: 120,
+              child: Card(
+                elevation: 5.0,
+                child: ListTile(
+                  title: Text(
+                    list[index]['judul'],
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.brown),
+                  ),
+                  subtitle: Text("Tanggal :${list[index]['tgl_berita']}"),
+                  trailing: Image.network(
+                    'http://apiternak.000webhostapp.com' + list[index]['foto'],
+                    fit: BoxFit.cover,
+                    width: 120.0,
+                    height: 120.0,
+                  ),
                 ),
               ),
             ),
@@ -72,7 +76,7 @@ class DetailBerita extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           Image.network(
-              'http://apiternak.000webhostapp.com/' + list[index]['foto']),
+              'http://apiternak.000webhostapp.com' + list[index]['foto']),
           Container(
             padding: EdgeInsets.all(32.0),
             child: Row(
@@ -86,7 +90,7 @@ class DetailBerita extends StatelessWidget {
                         child: Text(
                           list[index]['judul'],
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.brown),
+                              fontWeight: FontWeight.bold, color: Colors.brown, fontSize: 30),
                         ),
                       ),
                       Text(list[index]['tgl_berita'])
@@ -105,6 +109,7 @@ class DetailBerita extends StatelessWidget {
             child: Text(
               list[index]['isi'],
               softWrap: true,
+              style: TextStyle(fontSize:25),
             ),
           )
         ],

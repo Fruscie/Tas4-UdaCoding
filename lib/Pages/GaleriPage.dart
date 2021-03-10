@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:peternakan/model/galeri_model.dart';
 
-
 // ignore: must_be_immutable
 class GaleriPage extends StatelessWidget {
-var apiURL = '192.168.0.14';
+  var apiURL = 'apiternak.000webhostapp.com';
 
   @override
   Widget build(BuildContext context) {
@@ -38,19 +37,24 @@ class ItemList extends StatelessWidget {
                 return Detail(list, index);
               }));
             },
-            child: Card(
-              child: ListTile(
-                title: Text(
-                  list[index]['judul'],
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.brown),
-                ),
-                // subtitle: Text("Tanggal :${list[index]['tgl_berita']}"),
-                trailing: Image.network(
-                  'http://apiternak.000webhostapp.com/' + list[index]['gambar'],
-                  fit: BoxFit.cover,
-                  width: 60.0,
-                  height: 60.0,
+            child: Container(
+              height: 100,
+              child: Card(
+                elevation: 5.0,
+                child: ListTile(
+                  contentPadding: EdgeInsets.fromLTRB(20, 15, 10, 3),
+                  title: Text(
+                    list[index]['judul'],
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.brown,fontSize: 30),
+                  ),
+                  // subtitle: Text("Tanggal :${list[index]['tgl_berita']}"),
+                  trailing: Image.network(
+                    'http://apiternak.000webhostapp.com' + list[index]['gambar'],
+                    fit: BoxFit.cover,
+                    width: 120.0,
+                    height: 120.0,
+                  ),
                 ),
               ),
             ),
@@ -69,14 +73,14 @@ class Detail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(list[index]['judul']),
-      //   backgroundColor: Colors.brown,
-      // ),
+      appBar: AppBar(
+        title: Text(list[index]['judul']),
+        backgroundColor: HexColor('#393e46'),
+      ),
       body: ListView(
         children: <Widget>[
           Image.network(
-              'http://apiternak.000webhostapp.com/' + list[index]['gambar']),
+              'http://apiternak.000webhostapp.com' + list[index]['gambar']),
           Container(
             padding: EdgeInsets.all(32.0),
             child: Row(
@@ -90,7 +94,7 @@ class Detail extends StatelessWidget {
                         child: Text(
                           list[index]['judul'],
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.brown),
+                              fontWeight: FontWeight.bold, color: Colors.brown,fontSize: 30),
                         ),
                       ),
                       // Text(list[index]['tgl_berita'])
@@ -108,7 +112,7 @@ class Detail extends StatelessWidget {
             padding: EdgeInsets.all(32.0),
             child: Text(
               list[index]['isi'],
-              softWrap: true,
+              softWrap: true,style: TextStyle(fontSize:25),
             ),
           )
         ],

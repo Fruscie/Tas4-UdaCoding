@@ -24,6 +24,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      SizedBox(height:38),
                       Center(
                         child: Container(
                           height: 150,
@@ -188,8 +189,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                           .showSnackBar(SnackBar(
                                         content: Text(value),
                                       )));
+                                      _formKey.currentState.reset();
                             }
-                            _formKey.currentState.reset();
+                            
                           }),
                       TextButton(
                           onPressed: () {

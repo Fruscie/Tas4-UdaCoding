@@ -8,9 +8,9 @@ class User {
   User({this.userName, this.password});
 
   Future submitDataLogin(var nUsername, var nPassword) async {
-    String apiURL = "192.168.0.14";
+    String apiURL = "apiternak.000webhostapp.com";
     final apiResult = await http.post(
-        Uri.http(apiURL, 'flutter-server/login.php'),
+        Uri.http(apiURL, 'login.php'),
         body: {"username": nUsername, "password": nPassword});
 
     final data = jsonDecode(apiResult.body);
@@ -27,9 +27,9 @@ class User {
 
   Future submitDataRegister(
       dynamic name, dynamic email, dynamic nUsername, dynamic nPassword) async {
-    String apiURL = "192.168.0.14";
+    String apiURL = "apiternak.000webhostapp.com";
     final apiResult =
-        await http.post(Uri.http(apiURL, 'flutter-server/register.php'), body: {
+        await http.post(Uri.http(apiURL, 'register.php'), body: {
       "username": nUsername,
       "email": email,
       "full_name": name,
@@ -37,7 +37,7 @@ class User {
     });
 
     final data = jsonDecode(apiResult.body);
-    print(data);
+    // print(data);
     int value = data['value'];
     String message = data['message'];
     if (value == 1) {

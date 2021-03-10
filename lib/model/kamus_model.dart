@@ -1,10 +1,12 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 class Kamus {
-  Future<List> getKamus() async {
-    final response = await http
-        .get(Uri.http('192.168.0.14', '/flutter-server/get_kamus.php'));
-    return json.decode(response.body);
+  String judul, isi,id;
+  // int id;
+  Kamus(this.judul, this.isi, this.id);
+  
+   Kamus.fromJson(Map<String, dynamic> json) {
+    judul = json['judul'];
+    isi = json['isi'];
+    id = json['id'];
   }
 }

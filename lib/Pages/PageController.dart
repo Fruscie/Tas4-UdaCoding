@@ -23,6 +23,7 @@ class _PageControlState extends State<PageControl> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           centerTitle: true,
           title: Text("Farm's App"),
           backgroundColor: HexColor('#393e46'),
@@ -57,24 +58,3 @@ class _PageControlState extends State<PageControl> {
     });
   }
 }
-
-// class PageWidget extends StatelessWidget {
-//   final state;
-//   PageWidget(this.state);
-//   @override
-//   Widget build(BuildContext context) {
-//     if (state == "Berita") {
-//       return Scaffold(
-//         backgroundColor: HexColor('#eeeeee'),
-//       );
-//     } else if (state == "Galeri") {
-//       return Scaffold(
-//         backgroundColor: HexColor('#eeeeee'),
-//       );
-//     } else {
-//       return Scaffold(
-//         backgroundColor: HexColor('#eeeeee'),
-//       );
-//     }
-//   }
-// }
